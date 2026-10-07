@@ -1,0 +1,54 @@
+import { site } from "@/site.config";
+import { EmailLink } from "@/components/email";
+import { LegalDoc } from "@/components/legal-doc";
+import { DeleteSteps, DeletionTimeline } from "@/components/deletion";
+
+export const metadata = {
+  title: "Delete your TrackWithAgent account and data",
+  description:
+    "How to delete your TrackWithAgent Finance account in Settings, the 30-day window to change your mind, what is deleted, what group members keep, and what to do if you cannot log in.",
+  alternates: { canonical: "/delete-account" },
+  openGraph: { title: "Delete your TrackWithAgent account and data", url: "/delete-account" },
+};
+
+<LegalDoc
+  title="Delete your account and data"
+  dated={false}
+  intro="You can delete your TrackWithAgent Finance account at any time. Here is exactly how, and what happens next."
+>
+
+## Steps
+
+<DeleteSteps />
+
+## What happens next
+
+<DeletionTimeline />
+
+## What is deleted
+
+Your name, email and password hash, UPI ID, accounts, transactions, categories, budgets, recurring entries, savings goals, group memberships, shared expenses you paid, your splits, settlements to or from you, and invite links you created.
+
+## What other people keep
+
+Groups you were in stay for the other members. Shared expenses you paid and payments involving you are removed from those groups, so their group balances may change. Entries that were already added to other members' own trackers stay with them. Consider settling up and telling your group before you go.
+
+## Before you delete
+
+Download your transactions from Finance as a CSV file if you want a copy. Settle any open balances with friends.
+
+## Backups
+
+Our database provider keeps a short recovery history of up to {site.hosting.backupWindow}. Deleted data disappears from it when that window passes.
+
+## Cannot log in?
+
+Email <EmailLink email={site.privacyEmail} subject="Delete my account" /> from the email address on the account and ask us to delete it. We will confirm it is you and process the request within 30 days, following the same timeline.
+
+{site.finance.demoLogin && <p>The shared demo account cannot be deleted.</p>}
+
+## Website visitors
+
+trackwithagent.com does not store personal data about you, so there is nothing to delete for the website.
+
+</LegalDoc>
