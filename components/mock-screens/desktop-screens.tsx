@@ -174,7 +174,7 @@ export function SettleUpDesktopMock() {
         </Panel>
       </div>
       {/* settle-up dialog */}
-      <div className="absolute inset-0 flex items-center justify-center bg-background/60 backdrop-blur-[2px]">
+      <div className="absolute inset-0 flex items-center justify-center bg-background/70">
         <div className="w-[46%] rounded-xl border border-border bg-surface-2 p-3 text-center text-[10px] shadow-elev-3">
           <div className="flex items-center justify-between">
             <span className="font-display text-[12px] font-bold">Settle up with Priya</span>

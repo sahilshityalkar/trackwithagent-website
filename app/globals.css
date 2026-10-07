@@ -251,8 +251,8 @@ a {
 
 /* A soft brand glow placed behind a section. One per section at most. */
 @utility glow-brand {
-  background: radial-gradient(closest-side, oklch(0.62 0.24 330 / 0.28), transparent);
-  filter: blur(40px);
+  /* A wide radial falloff is already soft; no blur filter, which is costly to paint. */
+  background: radial-gradient(closest-side, oklch(0.62 0.24 330 / 0.24), oklch(0.62 0.24 330 / 0.08) 60%, transparent);
   pointer-events: none;
 }
 
