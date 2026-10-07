@@ -48,7 +48,7 @@ const FADE_IN = 0.3;
 const BEADS = 24;
 const RING_RADIUS = 2.2;
 const DEG = Math.PI / 180;
-const POSTER_TIME = CYCLE * 3 + 0.62;
+const POSTER_TIME = CYCLE * 3 + 0.2;
 
 const easeOut = (p: number) => 1 - Math.pow(1 - p, 4);
 
@@ -313,7 +313,10 @@ function Rig({ children, scroll, pointer, posterMode }: { children: ReactNode } 
 
   useFrame((_, delta) => {
     const aspect = size.width / Math.max(size.height, 1);
-    const baseZ = 7 * Math.max(1, 1.34 / aspect);
+    // Narrower than 4:3: pull back a little and centre on the cards and agent.
+    const narrow = Math.max(0, 1.34 / aspect - 1);
+    const baseZ = 7 * (1 + narrow * 0.85);
+    camera.position.x = -0.3 * Math.min(1, narrow * 3);
     camera.position.z = baseZ + 1.5 * (posterMode ? 0 : scroll.get());
     const target = pointer.current;
     if (group.current) {
