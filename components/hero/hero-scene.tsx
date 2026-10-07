@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, type ReactNode, type RefObject } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode, type RefObject } from "react";
 import * as THREE from "three";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import {
   AdaptiveDpr,
   Environment,
@@ -192,13 +192,13 @@ function Card({
   index,
   palette,
   texture,
-  arrivals,
+  onArrive,
   posterMode,
 }: {
   index: number;
   palette: ScenePalette;
   texture: THREE.Texture | null;
-  arrivals: RefObject<Arrivals>;
+  onArrive: (at: number) => void;
   posterMode?: boolean;
 }) {
   const group = useRef<THREE.Group>(null);
@@ -230,10 +230,9 @@ function Card({
       node.rotation.set(restRotation.x * (1 - p), restRotation.y * (1 - p), restRotation.z * (1 - p) + p * 0.6);
       opacity = 1 - 0.8 * p;
     } else {
-      if (flying && lastArrivalCycle.current !== cycle && arrivals.current) {
+      if (flying && lastArrivalCycle.current !== cycle) {
         lastArrivalCycle.current = cycle;
-        arrivals.current.count += 1;
-        arrivals.current.flashAt = cycle * CYCLE + FLIGHT;
+        onArrive(cycle * CYCLE + FLIGHT);
       }
       node.position.set(slot.x, slot.y + bob, slot.z);
       node.scale.setScalar(1);
@@ -268,12 +267,12 @@ function Card({
   );
 }
 
-function Cards({ palette, arrivals, posterMode }: { palette: ScenePalette; arrivals: RefObject<Arrivals>; posterMode?: boolean }) {
+function Cards({ palette, onArrive, posterMode }: { palette: ScenePalette; onArrive: (at: number) => void; posterMode?: boolean }) {
   const textures = useCardTextures(palette);
   return (
     <>
       {LABELS.map((label, i) => (
-        <Card key={label} index={i} palette={palette} texture={textures?.[i] ?? null} arrivals={arrivals} posterMode={posterMode} />
+        <Card key={label} index={i} palette={palette} texture={textures?.[i] ?? null} onArrive={onArrive} posterMode={posterMode} />
       ))}
     </>
   );
@@ -309,9 +308,8 @@ function useCardTextures(palette: ScenePalette) {
 /** Pointer tilt (max 6°), scroll dolly (+1.5 units) and aspect-aware framing. */
 function Rig({ children, scroll, pointer, posterMode }: { children: ReactNode } & Pick<HeroSceneProps, "scroll" | "pointer" | "posterMode">) {
   const group = useRef<THREE.Group>(null);
-  const { camera, size } = useThree();
 
-  useFrame((_, delta) => {
+  useFrame(({ camera, size }, delta) => {
     const aspect = size.width / Math.max(size.height, 1);
     // Narrower than 4:3: pull back a little and centre on the cards and agent.
     const narrow = Math.max(0, 1.34 / aspect - 1);
@@ -343,6 +341,11 @@ function FirstFrame({ onReady }: { onReady: () => void }) {
 export default function HeroScene({ active, theme, scroll, pointer, onReady, onDecline, posterMode }: HeroSceneProps) {
   const palette = palettes[theme];
   const arrivals = useRef<Arrivals>({ count: 0, flashAt: -10 });
+  // A card reaching the agent: flash the core and light the next bead.
+  const onArrive = useCallback((at: number) => {
+    arrivals.current.count += 1;
+    arrivals.current.flashAt = at;
+  }, []);
 
   return (
     <Canvas
@@ -364,7 +367,7 @@ export default function HeroScene({ active, theme, scroll, pointer, onReady, onD
       <Rig scroll={scroll} pointer={pointer} posterMode={posterMode}>
         <Agent palette={palette} arrivals={arrivals} posterMode={posterMode} />
         <LedgerRing palette={palette} arrivals={arrivals} posterMode={posterMode} />
-        <Cards palette={palette} arrivals={arrivals} posterMode={posterMode} />
+        <Cards palette={palette} onArrive={onArrive} posterMode={posterMode} />
       </Rig>
       <FirstFrame onReady={onReady} />
     </Canvas>

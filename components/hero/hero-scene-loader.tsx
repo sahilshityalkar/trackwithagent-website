@@ -3,13 +3,26 @@
 import dynamic from "next/dynamic";
 import { m, useScroll, useTransform } from "motion/react";
 import { useTheme } from "next-themes";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import { reasonToSkip3D } from "@/lib/device";
 
 // The 3D chunk is never in the initial bundle and never rendered on the server.
 const HeroScene = dynamic(() => import("./hero-scene"), { ssr: false });
 
-type Mode = "poster" | "phone" | "loading" | "ready" | "failed";
+type Mode = "poster" | "loading" | "ready" | "failed";
+
+type Capability = { skip: string | null; capture: boolean };
+
+// Checked once per page load; null on the server.
+let capability: Capability | null = null;
+const readCapability = () => {
+  if (!capability) {
+    const capture = new URLSearchParams(window.location.search).get("poster") === "1";
+    capability = { skip: capture ? null : reasonToSkip3D(), capture };
+  }
+  return capability;
+};
+const noSubscribe = () => () => {};
 
 /**
  * Shows the static poster first, then decides on the client whether this
@@ -24,8 +37,9 @@ export function HeroSceneLoader({ poster }: { poster: ReactNode }) {
   const [mode, setMode] = useState<Mode>("poster");
   const [visible, setVisible] = useState(true);
   const [tabHidden, setTabHidden] = useState(false);
-  const [posterMode, setPosterMode] = useState(false);
   const { resolvedTheme } = useTheme();
+  const device = useSyncExternalStore<Capability | null>(noSubscribe, readCapability, () => null);
+  const posterMode = device?.capture ?? false;
 
   useEffect(() => {
     heroRef.current = slotRef.current?.closest("section") ?? null;
@@ -36,14 +50,7 @@ export function HeroSceneLoader({ poster }: { poster: ReactNode }) {
 
   // Decide whether to load 3D, then wait for an idle moment.
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const capture = params.get("poster") === "1";
-    const reason = capture ? null : reasonToSkip3D();
-    if (reason) {
-      if (reason === "phone") setMode("phone");
-      return;
-    }
-    if (capture) setPosterMode(true);
+    if (!device || device.skip) return;
     const start = () => setMode("loading");
     if (typeof window.requestIdleCallback === "function") {
       const id = window.requestIdleCallback(start, { timeout: 2000 });
@@ -52,7 +59,7 @@ export function HeroSceneLoader({ poster }: { poster: ReactNode }) {
     // Safari has no requestIdleCallback.
     const id = setTimeout(start, 2000);
     return () => clearTimeout(id);
-  }, []);
+  }, [device]);
 
   // Pause rendering when the hero is off-screen or the tab is hidden.
   useEffect(() => {
@@ -93,7 +100,7 @@ export function HeroSceneLoader({ poster }: { poster: ReactNode }) {
     >
       <div
         className={`absolute inset-0 transition-opacity duration-[400ms] ${sceneVisible ? "opacity-0" : "opacity-100"} ${
-          mode === "phone" ? "animate-float-y" : ""
+          device?.skip === "phone" ? "animate-float-y" : ""
         }`}
       >
         {poster}
