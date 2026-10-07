@@ -59,6 +59,8 @@ export function ProductIcon({ product, size = 48, className = "" }: ProductIconP
       alt=""
       width={size}
       height={size}
+      loading="lazy"
+      decoding="async"
       className={`${product === "replay" ? "saturate-[0.6]" : ""} ${className}`}
       style={{ borderRadius: size * 0.31 }}
     />
