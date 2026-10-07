@@ -1,0 +1,143 @@
+import { site } from "@/site.config";
+import { EmailLink } from "@/components/email";
+import { LegalDoc } from "@/components/legal-doc";
+import { ProcessorsTable, EntityLine } from "@/components/legal-bits";
+
+export const metadata = {
+  title: "Privacy Policy",
+  description:
+    "How TrackWithAgent collects, uses and protects personal data on trackwithagent.com and in TrackWithAgent Finance, including AI processing, your rights and our Grievance Officer.",
+  alternates: { canonical: "/legal/privacy" },
+  openGraph: { title: "Privacy Policy | TrackWithAgent", url: "/legal/privacy" },
+};
+
+<LegalDoc title="Privacy Policy">
+
+## 1. Who we are
+
+This policy explains how {site.legalName} ("TrackWithAgent", "we", "us"), of {site.address}, collects and uses personal data when you visit trackwithagent.com (the "Website") or use TrackWithAgent Finance at finance.trackwithagent.com ("Finance"). Under India's Digital Personal Data Protection Act, 2023 (the "DPDP Act"), we are the Data Fiduciary for this data. For people in the European Economic Area, the United Kingdom and similar places, we are the data controller.
+
+TrackWithAgent Replay has not launched. This policy will be updated before it does.
+
+## 2. The short version
+
+- We collect what you give us to run Finance: your account details and the money records you enter.
+- We do not sell your data, show ads or use your data to train AI models.
+- We never ask for bank logins, card numbers or your UPI PIN, and we never move money.
+- When you use the AI assistant, the parts of your data needed to answer you are sent to an AI provider for that request.
+- You can export your transactions and delete your account at any time.
+
+## 3. Data we collect
+
+**3.1 When you create a Finance account:** your name, email address and password. We store the password only as a one-way bcrypt hash; we cannot read it.
+
+**3.2 Money records you enter:** accounts (name, type and opening balance), transactions (type, amount, description, date, category and account), categories, budgets, recurring entries, savings goals, groups, shared expenses and how they are split, and settlements between group members.
+
+**3.3 Optional details:** your UPI ID, if you add one so friends can pay you.
+
+**3.4 Things you send us to process:** messages you type or speak to the assistant, CSV files you import, and sentences you use to fill the quick-add form.
+
+**3.5 Technical data:** a session cookie (see our [Cookie Policy](/legal/cookies)), and your IP address and browser details, which our hosting provider records in request logs and which we use briefly in memory to limit abuse of invite links.
+
+**3.6 On the Website:** we use Vercel Web Analytics, which counts page views without cookies and without identifying you. The Website sets no cookies.
+
+**3.7 What we do not collect:** bank login details, card numbers, UPI PINs, the contents of your SMS inbox, your contacts or your location. When you paste a bank SMS into Finance, it is read on your device and only the entry you choose to save is sent to us. Voice input is converted to text by your browser's speech service (for example, Chrome uses Google's); we receive only the text, and only when you send it.
+
+## 4. Why we use your data
+
+| Purpose | Data | Basis under the DPDP Act | Basis under GDPR |
+|---|---|---|---|
+| Create and secure your account | Account data, technical data | Your consent when you sign up | Performance of a contract |
+| Run Finance: store records, calculate balances, budgets, reports and insights | Money records | Your consent | Performance of a contract |
+| Let group members split and settle | Name, shared group records, UPI ID if added | Your consent | Performance of a contract |
+| Answer and act on assistant requests | See section 5 | Your consent, given when you use the assistant | Performance of a contract |
+| Prevent abuse and keep the service secure | Technical data, login attempts | Legitimate uses permitted by law | Legitimate interests |
+| Understand Website traffic in aggregate | Cookieless analytics | Not personal data in identifiable form | Legitimate interests |
+| Meet legal obligations | As required | Compliance with law | Legal obligation |
+
+You can withdraw consent at any time by deleting your account (section 9). Withdrawal does not affect processing already done.
+
+## 5. How the AI assistant uses your data
+
+When you use the assistant or the "say it" quick-add field, our server sends your request to an AI provider so it can understand you and propose an answer or an entry. We currently use: {site.ai.providersShort}. If one is unavailable we try the next.
+
+For each request we send: your first name, today's date, the names of your categories, accounts, savings goals and groups, your default account, up to your last 12 messages in the current conversation, and the results of lookups the assistant runs to answer you (for example, matching transactions, monthly totals, balances, budget status, upcoming bills, goal progress, and names and balances in groups you belong to).
+
+We never send your email address, password, UPI ID or session cookie. We do not store assistant conversations in our database. AI providers process the request under their own API terms. {site.ai.retentionNote} The assistant never changes your records on its own: every proposed change waits for you to confirm it. More detail: our [AI use disclosure](/legal/ai).
+
+## 6. Who can see your data
+
+- **You.** Your personal records are visible only to you.
+- **Members of your groups.** They see your name, the group's shared expenses and settlements, your balance with them, and your UPI ID if you added one.
+- **Our service providers (Data Processors),** only to run the service:
+
+<ProcessorsTable />
+
+- **Authorities,** when Indian law or a valid legal order requires it.
+- **A successor,** if we merge or are acquired, under this policy's protections, with notice to you.
+
+We do not sell or rent personal data, and we do not share it for advertising.
+
+## 7. Transfers outside India
+
+Our providers process data outside India, including in the countries listed above. We transfer data only to countries not restricted by the Government of India under section 16 of the DPDP Act, and rely on our providers' contractual safeguards (such as Standard Contractual Clauses for data from the EEA and UK).
+
+## 8. How long we keep data
+
+- Account and money records: for as long as your account exists.
+- After you ask to delete your account: 30 days, so you can change your mind, then permanent deletion (section 9).
+- Database recovery history kept by our database provider: up to {site.hosting.backupWindow}, after which deleted data cannot be restored.
+- Hosting request logs: up to {site.hosting.logRetention} under our hosting provider's settings.
+- Rate-limit counters: in server memory only, cleared within a day.
+- Emails you send us: as long as needed to deal with your request, and then up to 3 years for our records, unless law requires longer.
+
+## 9. Deleting your account
+
+In Finance, go to Settings, choose Delete account and type your email to confirm. You are signed out on every device straight away. If you log in within 30 days, the deletion is cancelled. After 30 days we permanently delete your account and all your records. Full steps and what happens to group data: [trackwithagent.com/delete-account](/delete-account). If you cannot log in, email <EmailLink email={site.privacyEmail} /> from your account's email address.
+
+## 10. Your rights
+
+Under the DPDP Act you have the right to:
+
+- get a summary of the personal data we process about you and the processing we do, and the identities of anyone we have shared it with;
+- have inaccurate or incomplete data corrected, completed or updated;
+- have your data erased, unless the law requires us to keep it;
+- withdraw your consent at any time;
+- have your grievance addressed by us (section 12) before approaching the Data Protection Board of India;
+- nominate another person to exercise these rights if you die or cannot act yourself.
+
+If GDPR or a similar law applies to you, you also have the right to access and receive a copy of your data in a portable format, to restrict or object to processing, and to complain to your local data protection authority.
+
+Most of this you can do yourself in Finance: edit or delete records, change your name or UPI ID, export transactions as CSV, and delete your account. For anything else, email <EmailLink email={site.privacyEmail} />. We may ask you to confirm your identity, and we will respond within 30 days, or sooner where the law requires.
+
+You also have duties under the DPDP Act, such as not giving false information or impersonating someone.
+
+## 11. Security
+
+We use HTTPS for all traffic, store passwords only as bcrypt hashes, keep sessions in secure HttpOnly cookies, check on every request that you can see only your own data, and limit login attempts and AI usage. No system is perfectly secure. If a personal data breach affects you, we will inform you and the Data Protection Board of India as the law requires. More: [trackwithagent.com/security](/security).
+
+<h2 id="grievance">12. Grievance Officer</h2>
+
+Under the DPDP Act and the Information Technology Act, 2000 and its rules, you can contact our Grievance Officer about how we handle your data or anything on our services:
+
+<address>
+  {site.grievance.name}<br />
+  <EntityLine /><br />
+  Email: <EmailLink email={site.grievance.email} />
+</address>
+
+We acknowledge complaints within 24 hours and aim to resolve them within 15 days. If you are not satisfied, you may complain to the Data Protection Board of India.
+
+## 13. Children
+
+Our services are for people aged {site.minimumAge} and over. We do not knowingly collect data from children. If you believe a child has created an account, email <EmailLink email={site.privacyEmail} /> and we will delete it.
+
+## 14. Changes to this policy
+
+If we make a significant change, we will update the date above and tell Finance users in the app or by email before it takes effect.
+
+## 15. Contact
+
+<EmailLink email={site.privacyEmail} /> · <EntityLine />
+
+</LegalDoc>
