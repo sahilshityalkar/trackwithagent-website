@@ -1,19 +1,16 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/site.config";
 import { EmailLink } from "@/components/email";
 import { PageHeader } from "@/components/page-header";
 import { ProductCard } from "@/components/product-card";
 import { Reveal } from "@/components/reveal";
 
-const description =
-  "TrackWithAgent builds focused AI agents. Finance, our money tracker for India, is live. Replay, our next agent, is on the way.";
-
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Products",
-  description,
-  alternates: { canonical: "/products" },
-  openGraph: { title: "Products | TrackWithAgent", description, url: "/products" },
-};
+  description:
+    "TrackWithAgent builds focused AI agents. Finance, our money tracker for India, is live. Replay, our next agent, is on the way. The agent proposes, you decide.",
+  path: "/products",
+});
 
 export default function ProductsPage() {
   return (

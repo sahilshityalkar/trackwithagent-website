@@ -1,19 +1,18 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import { site } from "@/site.config";
 import { ButtonLink } from "@/components/button";
 import { PageHeader } from "@/components/page-header";
 import { Reveal } from "@/components/reveal";
 
-const description =
-  "TrackWithAgent builds AI agents that do the tracking for you, starting with Finance for money in India. Why we started, what we believe and how we build.";
 
-export const metadata: Metadata = {
-  title: { absolute: "About TrackWithAgent" },
-  description,
-  alternates: { canonical: "/about" },
-  openGraph: { title: "About TrackWithAgent", description, url: "/about" },
-};
+export const metadata = pageMetadata({
+  title: "About TrackWithAgent",
+  description:
+    "TrackWithAgent builds AI agents that do the tracking for you, starting with Finance for money in India. Why we started, what we believe and how we build.",
+  path: "/about",
+  absolute: true,
+});
 
 const beliefs = [
   "Logging should take seconds, not forms.",

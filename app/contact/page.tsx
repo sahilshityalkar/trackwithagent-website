@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { isPlaceholder, site } from "@/site.config";
@@ -7,15 +7,14 @@ import { EmailLink } from "@/components/email";
 import { PageHeader } from "@/components/page-header";
 import { Reveal } from "@/components/reveal";
 
-const description =
-  "Contact TrackWithAgent for partnerships, help with Finance, privacy and data requests, security reports or our Grievance Officer. We reply within two working days.";
 
-export const metadata: Metadata = {
-  title: { absolute: "Contact TrackWithAgent" },
-  description,
-  alternates: { canonical: "/contact" },
-  openGraph: { title: "Contact TrackWithAgent", description, url: "/contact" },
-};
+export const metadata = pageMetadata({
+  title: "Contact TrackWithAgent",
+  description:
+    "Contact TrackWithAgent about partnerships, help with Finance, privacy requests, security reports or our Grievance Officer. Replies within two working days.",
+  path: "/contact",
+  absolute: true,
+});
 
 type Card = { title: string; email: string; name?: string; help?: ReactNode; link?: { href: string; label: string } };
 

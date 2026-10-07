@@ -1,15 +1,16 @@
+import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/site.config";
 import { EmailLink } from "@/components/email";
 import { LegalDoc } from "@/components/legal-doc";
 import { DeleteSteps, DeletionTimeline } from "@/components/deletion";
 
-export const metadata = {
-  title: { absolute: "Delete your TrackWithAgent account and data" },
+export const metadata = pageMetadata({
+  title: "Delete your TrackWithAgent account and data",
   description:
-    "How to delete your TrackWithAgent Finance account in Settings, the 30-day window to change your mind, what is deleted, what group members keep, and what to do if you cannot log in.",
-  alternates: { canonical: "/delete-account" },
-  openGraph: { title: "Delete your TrackWithAgent account and data", url: "/delete-account" },
-};
+    "How to delete your Finance account in Settings, the 30-day window to change your mind, what is deleted, what group members keep and how to ask us.",
+  path: "/delete-account",
+  absolute: true,
+});
 
 <LegalDoc
   title="Delete your account and data"

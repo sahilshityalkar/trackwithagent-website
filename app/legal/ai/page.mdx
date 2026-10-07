@@ -1,14 +1,14 @@
+import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/site.config";
 import { EmailLink } from "@/components/email";
 import { LegalDoc } from "@/components/legal-doc";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "How we use AI",
   description:
-    "What the TrackWithAgent Finance assistant does, what data it sends to AI providers and what it never sends, why it cannot change your records without your tap, and its limits.",
-  alternates: { canonical: "/legal/ai" },
-  openGraph: { title: "How we use AI | TrackWithAgent", url: "/legal/ai" },
-};
+    "What the Finance assistant does, what it sends to AI providers and what it never sends, why it cannot change your records without your tap, and its limits.",
+  path: "/legal/ai",
+});
 
 <LegalDoc title="How we use AI">
 

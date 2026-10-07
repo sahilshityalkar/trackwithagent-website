@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { site } from "@/site.config";
 import { screenshots } from "@/content/screenshots";
@@ -25,16 +25,14 @@ import { Reveal } from "@/components/reveal";
 import { Tilt } from "@/components/tilt";
 import { financeAppSchema } from "@/lib/schema";
 
-const title = "TrackWithAgent Finance: track every rupee, split with friends, settle by UPI";
-const description =
-  "A personal finance tracker for India with an AI assistant you can talk to in English, Hindi or Hinglish. Free during early access.";
 
-export const metadata: Metadata = {
-  title: { absolute: title },
-  description,
-  alternates: { canonical: "/products/finance" },
-  openGraph: { title, description, url: "/products/finance" },
-};
+export const metadata = pageMetadata({
+  title: "TrackWithAgent Finance: track every rupee, split with friends, settle by UPI",
+  description:
+    "A personal finance tracker for India with an AI assistant you can talk to in English, Hindi or Hinglish. Split bills, settle by UPI. Free during early access.",
+  path: "/products/finance",
+  absolute: true,
+});
 
 const prompts = [
   "How much did I spend on travel in August?",

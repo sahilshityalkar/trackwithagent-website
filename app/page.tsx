@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { faq } from "@/content/faq";
 import { CtaBand } from "@/components/cta-band";
 import { Faq } from "@/components/faq";
@@ -12,10 +12,13 @@ import { Section } from "@/components/section";
 import { TrustSection } from "@/components/trust-section";
 import { faqSchema, financeAppSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: { absolute: "TrackWithAgent: AI agents that keep track for you" },
-  alternates: { canonical: "/" },
-};
+export const metadata = pageMetadata({
+  title: "TrackWithAgent: AI agents that keep track for you",
+  description:
+    "TrackWithAgent builds AI agents for everyday records. Our first, Finance, logs a spend from one sentence, splits bills and settles up through your own UPI app.",
+  path: "/",
+  absolute: true,
+});
 
 export default function Home() {
   return (

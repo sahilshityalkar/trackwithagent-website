@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { Ban, Bot, Database, KeyRound, Link2, Lock, ShieldCheck, Trash2, type LucideIcon } from "lucide-react";
@@ -7,15 +7,14 @@ import { EmailLink } from "@/components/email";
 import { PageHeader } from "@/components/page-header";
 import { Reveal } from "@/components/reveal";
 
-const description =
-  "How TrackWithAgent protects Finance data: no bank access, bcrypt passwords, HttpOnly sessions, per-user isolation, an AI that cannot act alone, and how to report a vulnerability.";
 
-export const metadata: Metadata = {
-  title: { absolute: "Security at TrackWithAgent" },
-  description,
-  alternates: { canonical: "/security" },
-  openGraph: { title: "Security at TrackWithAgent", description, url: "/security" },
-};
+export const metadata = pageMetadata({
+  title: "Security at TrackWithAgent",
+  description:
+    "How we protect Finance data: no bank access, bcrypt passwords, HttpOnly sessions, per-user isolation, an AI that cannot act alone, and how to report issues.",
+  path: "/security",
+  absolute: true,
+});
 
 const practices: { icon: LucideIcon; title: string; body: ReactNode }[] = [
   {

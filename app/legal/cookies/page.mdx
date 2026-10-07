@@ -1,14 +1,14 @@
+import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/site.config";
 import { EmailLink } from "@/components/email";
 import { LegalDoc } from "@/components/legal-doc";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Cookie Policy",
   description:
-    "trackwithagent.com sets no cookies. TrackWithAgent Finance sets one strictly necessary login cookie and a few preferences in local storage. No tracking or advertising cookies.",
-  alternates: { canonical: "/legal/cookies" },
-  openGraph: { title: "Cookie Policy | TrackWithAgent", url: "/legal/cookies" },
-};
+    "trackwithagent.com sets no cookies. TrackWithAgent Finance sets one strictly necessary login cookie and a few preferences in local storage. No tracking cookies.",
+  path: "/legal/cookies",
+});
 
 <LegalDoc title="Cookie Policy">
 

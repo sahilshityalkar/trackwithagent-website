@@ -1,14 +1,14 @@
+import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/site.config";
 import { EmailLink } from "@/components/email";
 import { LegalDoc } from "@/components/legal-doc";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Acceptable Use Policy",
   description:
-    "The rules that keep TrackWithAgent safe and fair: no illegal use, no harassment through groups or reminders, no probing our security, and no misuse of the AI assistant.",
-  alternates: { canonical: "/legal/acceptable-use" },
-  openGraph: { title: "Acceptable Use Policy | TrackWithAgent", url: "/legal/acceptable-use" },
-};
+    "The rules that keep TrackWithAgent safe and fair: no illegal use, no harassment through groups or reminders, no probing our security, no misusing the assistant.",
+  path: "/legal/acceptable-use",
+});
 
 <LegalDoc title="Acceptable Use Policy" intro="These rules keep TrackWithAgent safe and fair for everyone. They are part of our Terms of Service.">
 

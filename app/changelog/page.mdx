@@ -1,14 +1,14 @@
+import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/site.config";
 import { Entry } from "@/components/changelog-entry";
 import { PageHeader } from "@/components/page-header";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "What's new",
   description:
-    "Release notes for TrackWithAgent: the website launch and TrackWithAgent Finance v1.0 with quick add, a Hindi and Hinglish assistant, UPI settle-up and safe to spend today.",
-  alternates: { canonical: "/changelog" },
-  openGraph: { title: "What's new | TrackWithAgent", url: "/changelog" },
-};
+    "Release notes for TrackWithAgent: the website launch and Finance v1.0 with quick add, a Hindi and Hinglish assistant, UPI settle-up and safe to spend today.",
+  path: "/changelog",
+});
 
 <PageHeader title="What's new" intro="Every release of TrackWithAgent, newest first." />
 

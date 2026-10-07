@@ -1,15 +1,15 @@
+import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/site.config";
 import { EmailLink } from "@/components/email";
 import { LegalDoc } from "@/components/legal-doc";
 import { EntityLine } from "@/components/legal-bits";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Terms of Service",
   description:
-    "The terms for using trackwithagent.com and TrackWithAgent Finance: your account, what Finance does and does not do, the AI assistant, groups, price, liability and disputes.",
-  alternates: { canonical: "/legal/terms" },
-  openGraph: { title: "Terms of Service | TrackWithAgent", url: "/legal/terms" },
-};
+    "The terms for trackwithagent.com and TrackWithAgent Finance: your account, what Finance does and does not do, the AI assistant, groups, liability and disputes.",
+  path: "/legal/terms",
+});
 
 <LegalDoc title="Terms of Service">
 

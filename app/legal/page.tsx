@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { site } from "@/site.config";
 import { EmailLink } from "@/components/email";
@@ -6,15 +6,13 @@ import { PageHeader } from "@/components/page-header";
 import { Reveal } from "@/components/reveal";
 import { legalPages } from "@/content/legal";
 
-const description =
-  "Legal documents for trackwithagent.com and TrackWithAgent Finance: Privacy Policy, Terms of Service, Cookie Policy, Acceptable Use, AI use and account deletion.";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Legal",
-  description,
-  alternates: { canonical: "/legal" },
-  openGraph: { title: "Legal | TrackWithAgent", description, url: "/legal" },
-};
+  description:
+    "Legal documents for trackwithagent.com and TrackWithAgent Finance: privacy, terms, cookies, acceptable use, how we use AI and how to delete your account.",
+  path: "/legal",
+});
 
 export default function LegalIndexPage() {
   return (

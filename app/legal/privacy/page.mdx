@@ -1,15 +1,15 @@
+import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/site.config";
 import { EmailLink } from "@/components/email";
 import { LegalDoc } from "@/components/legal-doc";
 import { ProcessorsTable, EntityLine } from "@/components/legal-bits";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Privacy Policy",
   description:
-    "How TrackWithAgent collects, uses and protects personal data on trackwithagent.com and in TrackWithAgent Finance, including AI processing, your rights and our Grievance Officer.",
-  alternates: { canonical: "/legal/privacy" },
-  openGraph: { title: "Privacy Policy | TrackWithAgent", url: "/legal/privacy" },
-};
+    "How TrackWithAgent collects, uses and protects personal data on trackwithagent.com and in Finance, including AI processing, your rights and grievances.",
+  path: "/legal/privacy",
+});
 
 <LegalDoc title="Privacy Policy">
 

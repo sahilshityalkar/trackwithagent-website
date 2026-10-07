@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { isPlaceholder, site, waitlistMailto } from "@/site.config";
 import { ButtonLink } from "@/components/button";
 import { ComingSoonChip } from "@/components/chip";
@@ -7,15 +7,12 @@ import { ProductIcon } from "@/components/logo";
 import { ProductCard } from "@/components/product-card";
 import { Reveal } from "@/components/reveal";
 
-const title = "TrackWithAgent Replay: coming soon";
-
-export const metadata: Metadata = {
-  title: { absolute: title },
+export const metadata = pageMetadata({
+  title: "TrackWithAgent Replay: coming soon",
   description: site.replay.description,
-  alternates: { canonical: "/products/replay" },
-  robots: { index: true, follow: true },
-  openGraph: { title, description: site.replay.description, url: "/products/replay" },
-};
+  path: "/products/replay",
+  absolute: true,
+});
 
 function WaitlistButton() {
   if (site.replay.waitlistFormUrl) {
