@@ -11,7 +11,7 @@ const description =
   "How TrackWithAgent protects Finance data: no bank access, bcrypt passwords, HttpOnly sessions, per-user isolation, an AI that cannot act alone, and how to report a vulnerability.";
 
 export const metadata: Metadata = {
-  title: "Security at TrackWithAgent",
+  title: { absolute: "Security at TrackWithAgent" },
   description,
   alternates: { canonical: "/security" },
   openGraph: { title: "Security at TrackWithAgent", description, url: "/security" },

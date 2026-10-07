@@ -9,7 +9,7 @@ const description =
   "TrackWithAgent builds AI agents that do the tracking for you, starting with Finance for money in India. Why we started, what we believe and how we build.";
 
 export const metadata: Metadata = {
-  title: "About TrackWithAgent",
+  title: { absolute: "About TrackWithAgent" },
   description,
   alternates: { canonical: "/about" },
   openGraph: { title: "About TrackWithAgent", description, url: "/about" },

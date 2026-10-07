@@ -11,7 +11,7 @@ const description =
   "Contact TrackWithAgent for partnerships, help with Finance, privacy and data requests, security reports or our Grievance Officer. We reply within two working days.";
 
 export const metadata: Metadata = {
-  title: "Contact TrackWithAgent",
+  title: { absolute: "Contact TrackWithAgent" },
   description,
   alternates: { canonical: "/contact" },
   openGraph: { title: "Contact TrackWithAgent", description, url: "/contact" },
