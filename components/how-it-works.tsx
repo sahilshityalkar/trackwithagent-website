@@ -72,7 +72,7 @@ export function HowItWorks() {
                     stepRefs.current[i] = node;
                   }}
                   data-step={n}
-                  className="flex min-h-[70svh] items-center"
+                  className="flex min-h-[60svh] items-center"
                 >
                   <div className={`flex gap-5 transition-opacity duration-300 ${active ? "opacity-100" : "opacity-40"}`}>
                     <StepNumber n={n} active={active} />
