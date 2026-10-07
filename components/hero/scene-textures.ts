@@ -6,12 +6,14 @@ export type ScenePalette = {
   primary: string;
   accent: string;
   light: number;
+  /** Self-lighting on card bodies so light-mode cards read as white. */
+  cardGlow: number;
 };
 
 // sRGB approximations of the CSS tokens (three.js does not read oklch).
 export const palettes: Record<"dark" | "light", ScenePalette> = {
-  dark: { surface: "#1d1c27", text: "#f3f3f8", primary: "#8d7cf6", accent: "#ef6fb4", light: 1 },
-  light: { surface: "#ffffff", text: "#1f1b2e", primary: "#5b39df", accent: "#e0358f", light: 0.7 },
+  dark: { surface: "#1d1c27", text: "#f3f3f8", primary: "#8d7cf6", accent: "#ef6fb4", light: 1, cardGlow: 0 },
+  light: { surface: "#ffffff", text: "#1f1b2e", primary: "#5b39df", accent: "#e0358f", light: 0.7, cardGlow: 0.55 },
 };
 
 const BRAND = ["#6a30de", "#c0008a", "#c64100"];
@@ -74,16 +76,18 @@ export function makeGlowTexture() {
   canvas.width = size;
   canvas.height = size;
   const ctx = canvas.getContext("2d")!;
+  // Each blob fades to its own colour at zero alpha (not to black) and stays
+  // inside the texture, so no grey halo or square edge shows.
   const layers: [number, number, number, string][] = [
-    [0.36, 0.38, 0.4, "rgba(122,64,255,1)"],
-    [0.64, 0.46, 0.4, "rgba(230,40,170,1)"],
-    [0.52, 0.7, 0.36, "rgba(255,120,30,0.95)"],
-    [0.5, 0.5, 0.2, "rgba(255,220,240,0.9)"],
+    [0.4, 0.42, 0.3, "122,64,255"],
+    [0.6, 0.47, 0.3, "230,40,170"],
+    [0.52, 0.64, 0.28, "255,120,30"],
+    [0.5, 0.5, 0.16, "255,220,240"],
   ];
-  for (const [x, y, r, color] of layers) {
+  for (const [x, y, r, rgb] of layers) {
     const g = ctx.createRadialGradient(x * size, y * size, 0, x * size, y * size, size * r);
-    g.addColorStop(0, color);
-    g.addColorStop(1, "rgba(0,0,0,0)");
+    g.addColorStop(0, `rgba(${rgb},1)`);
+    g.addColorStop(1, `rgba(${rgb},0)`);
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, size, size);
   }

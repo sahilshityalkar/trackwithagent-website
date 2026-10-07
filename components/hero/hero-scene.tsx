@@ -247,7 +247,16 @@ function Card({
   return (
     <group ref={group} position={slot}>
       <RoundedBox args={[1.2, 0.5, 0.04]} radius={0.08} smoothness={4}>
-        <meshStandardMaterial ref={boxMaterial} color={palette.surface} roughness={0.55} metalness={0.05} transparent opacity={0.85} />
+        <meshStandardMaterial
+          ref={boxMaterial}
+          color={palette.surface}
+          emissive={palette.surface}
+          emissiveIntensity={palette.cardGlow}
+          roughness={0.55}
+          metalness={0.05}
+          transparent
+          opacity={0.85}
+        />
       </RoundedBox>
       {texture && (
         <mesh position={[0, 0, 0.022]}>
