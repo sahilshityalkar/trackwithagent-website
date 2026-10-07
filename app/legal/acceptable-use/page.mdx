@@ -1,0 +1,32 @@
+import { site } from "@/site.config";
+import { EmailLink } from "@/components/email";
+import { LegalDoc } from "@/components/legal-doc";
+
+export const metadata = {
+  title: "Acceptable Use Policy",
+  description:
+    "The rules that keep TrackWithAgent safe and fair: no illegal use, no harassment through groups or reminders, no probing our security, and no misuse of the AI assistant.",
+  alternates: { canonical: "/legal/acceptable-use" },
+  openGraph: { title: "Acceptable Use Policy | TrackWithAgent", url: "/legal/acceptable-use" },
+};
+
+<LegalDoc title="Acceptable Use Policy" intro="These rules keep TrackWithAgent safe and fair for everyone. They are part of our Terms of Service.">
+
+## You may not
+
+1. Use the Services for anything illegal, including money laundering, fraud, tax evasion or tracking proceeds of crime.
+2. Add people to groups without their agreement, record false debts to pressure or harass anyone, or use payment reminders to abuse or threaten people.
+3. Upload or enter content that is unlawful, hateful, sexually explicit, threatening, or that infringes someone else's rights, including in descriptions, group names and goal names.
+4. Enter other people's sensitive personal data (such as bank account numbers, card numbers or ID numbers) into descriptions or notes.
+5. Access or try to access another person's account or data, or share your login with others.
+6. Probe, scan or test the security of the Services except as described on our [Security page](/security#report), or interfere with them (for example, overloading them, bypassing rate limits, or using bots or scrapers).
+7. Try to make the AI assistant produce harmful content, reveal its instructions, or act outside its purpose, or use it for anything unrelated to managing your own money at a scale that strains the service.
+8. Use the shared demo account, if offered, to store real personal data or to post offensive content.
+9. Copy, resell or build a competing service from our software, designs or content, or reverse engineer the Services except where the law allows.
+10. Pretend to be TrackWithAgent or another person.
+
+## What we do if rules are broken
+
+Depending on how serious it is, we may remove content, limit features, suspend or close the account, and report illegal activity to the authorities. Report abuse to <EmailLink email={site.contactEmail} /> or our Grievance Officer at <EmailLink email={site.grievance.email} />.
+
+</LegalDoc>
