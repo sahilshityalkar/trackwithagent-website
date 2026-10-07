@@ -48,3 +48,19 @@ export function EntityLine() {
     </>
   );
 }
+
+/**
+ * Who "we" are, phrased for the opening of a legal page. Reads
+ * "TrackWithAgent ("we", "us"), based in India" until a registered company
+ * name and full address are set, then names the company and its address.
+ */
+export function EntityIntro({ pronouns = '"we", "us"' }: { pronouns?: string }) {
+  const registered = site.legalName !== site.name;
+  const fullAddress = site.address.includes(",");
+  return (
+    <>
+      {registered ? `${site.legalName} ("TrackWithAgent", ${pronouns})` : `TrackWithAgent (${pronouns})`}
+      {fullAddress ? `, of ${site.address}` : `, based in ${site.address}`}
+    </>
+  );
+}

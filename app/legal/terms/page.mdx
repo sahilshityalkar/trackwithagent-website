@@ -2,7 +2,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/site.config";
 import { EmailLink } from "@/components/email";
 import { LegalDoc } from "@/components/legal-doc";
-import { EntityLine } from "@/components/legal-bits";
+import { EntityIntro, EntityLine } from "@/components/legal-bits";
 
 export const metadata = pageMetadata({
   title: "Terms of Service",
@@ -15,7 +15,7 @@ export const metadata = pageMetadata({
 
 ## 1. Agreement
 
-These terms are an agreement between you and {site.legalName} ("TrackWithAgent", "we"), {site.address}, and cover trackwithagent.com and TrackWithAgent Finance (together, the "Services"). By creating an account or using the Services, you agree to these terms, our [Privacy Policy](/legal/privacy) and our [Acceptable Use Policy](/legal/acceptable-use). If you do not agree, do not use the Services.
+These terms are an agreement between you and <EntityIntro pronouns={'"we"'} />, and cover trackwithagent.com and TrackWithAgent Finance (together, the "Services"). By creating an account or using the Services, you agree to these terms, our [Privacy Policy](/legal/privacy) and our [Acceptable Use Policy](/legal/acceptable-use). If you do not agree, do not use the Services.
 
 ## 2. Who can use the Services
 
@@ -79,7 +79,7 @@ If you break these terms or the law and someone makes a claim against us because
 
 ## 16. Governing law and disputes
 
-These terms are governed by the laws of India. Before going to court, please contact us so we can try to fix the problem. The courts at {site.courtsCity} have exclusive jurisdiction, subject to any right you have to bring a consumer complaint where you live.
+These terms are governed by the laws of India. Before going to court, please contact us so we can try to fix the problem. {site.courtsCity ? `The courts at ${site.courtsCity} have` : "The courts of India have"} exclusive jurisdiction, subject to any right you have to bring a consumer complaint where you live.
 
 ## 17. Grievances
 
