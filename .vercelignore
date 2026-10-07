@@ -1,0 +1,4 @@
+.playwright-mcp
+e2e/__screens__
+test-results
+playwright-report
