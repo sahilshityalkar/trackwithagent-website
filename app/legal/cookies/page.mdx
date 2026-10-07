@@ -1,0 +1,50 @@
+import { site } from "@/site.config";
+import { EmailLink } from "@/components/email";
+import { LegalDoc } from "@/components/legal-doc";
+
+export const metadata = {
+  title: "Cookie Policy",
+  description:
+    "trackwithagent.com sets no cookies. TrackWithAgent Finance sets one strictly necessary login cookie and a few preferences in local storage. No tracking or advertising cookies.",
+  alternates: { canonical: "/legal/cookies" },
+  openGraph: { title: "Cookie Policy | TrackWithAgent", url: "/legal/cookies" },
+};
+
+<LegalDoc title="Cookie Policy">
+
+## 1. The short version
+
+trackwithagent.com sets no cookies. TrackWithAgent Finance sets one cookie, which is needed to keep you logged in. We use no advertising, tracking or analytics cookies anywhere, so we do not show a cookie banner.
+
+## 2. trackwithagent.com
+
+- No cookies.
+- Your light or dark theme choice is saved in your browser's local storage (`theme`). It never leaves your device.
+- Vercel Web Analytics counts page views without cookies and without identifying you.
+
+## 3. TrackWithAgent Finance (finance.trackwithagent.com)
+
+| Name | Type | Purpose | Lasts | Can you refuse it? |
+|---|---|---|---|---|
+| `token` | Cookie, strictly necessary | Keeps you logged in. A signed token holding your account ID and session version. HttpOnly (scripts cannot read it), Secure, SameSite=Lax. | 30 days, or until you log out, change your password or delete your account | No, you cannot log in without it |
+| `theme` | Local storage | Remembers light, dark or system theme | Until you clear it | Yes, clear site data; the app falls back to your system theme |
+| Quick-add account | Local storage | Remembers the account you last used in quick add, per user | Until you clear it | Yes |
+| Voice language | Local storage | Remembers English or Hindi for voice input, per user | Until you clear it | Yes |
+| Read replies aloud | Local storage | Remembers whether the assistant speaks its replies, per user | Until you clear it | Yes |
+| Celebrations | Local storage | Remembers which milestone celebrations already played, so they do not repeat | Until you clear it | Yes |
+
+Local storage items stay on your device and are not sent to our servers.
+
+## 4. Managing cookies
+
+You can delete cookies and site data in your browser settings at any time. Deleting the `token` cookie logs you out.
+
+## 5. Changes
+
+If we ever add a cookie that is not strictly necessary, we will ask for your consent first and update this page.
+
+## 6. Contact
+
+<EmailLink email={site.privacyEmail} />
+
+</LegalDoc>
