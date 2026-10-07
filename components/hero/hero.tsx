@@ -2,6 +2,7 @@ import { site } from "@/site.config";
 import { hero } from "@/content/home";
 import { ButtonLink } from "../button";
 import { HeroArt } from "./hero-art";
+import { HeroSceneLoader } from "./hero-scene-loader";
 
 /** Server-rendered hero: copy on the left, the scene slot on the right. */
 export function Hero() {
@@ -30,7 +31,7 @@ export function Hero() {
         </div>
 
         <div className="relative mx-auto aspect-square w-full max-w-[34rem] lg:aspect-[4/3] lg:max-w-none">
-          <HeroArt />
+          <HeroSceneLoader poster={<HeroArt />} />
         </div>
       </div>
     </section>
