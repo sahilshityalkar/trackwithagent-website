@@ -1,7 +1,7 @@
 import { site } from "@/site.config";
 import { hero } from "@/content/home";
 import { ButtonLink } from "../button";
-import { HeroArt } from "./hero-art";
+import { HeroPoster } from "./hero-poster";
 import { HeroSceneLoader } from "./hero-scene-loader";
 
 /** Server-rendered hero: copy on the left, the scene slot on the right. */
@@ -31,7 +31,7 @@ export function Hero() {
         </div>
 
         <div className="relative mx-auto aspect-square w-full max-w-[34rem] lg:aspect-[4/3] lg:max-w-none">
-          <HeroSceneLoader poster={<HeroArt />} />
+          <HeroSceneLoader poster={<HeroPoster />} />
         </div>
       </div>
     </section>
