@@ -35,7 +35,11 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   pageExtensions: ["ts", "tsx", "mdx"],
-  env: { BUILD_DATE: buildDate },
+  env: {
+    BUILD_DATE: buildDate,
+    // Analytics only works on Vercel; locally its script would 404.
+    ANALYTICS: process.env.VERCEL ? "on" : "",
+  },
   images: { formats: ["image/avif", "image/webp"] },
   turbopack: {
     rules: {

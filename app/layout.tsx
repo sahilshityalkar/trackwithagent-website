@@ -97,7 +97,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <SiteFooter />
         </Providers>
         <JsonLd data={[organizationSchema(), websiteSchema()]} />
-        <Analytics />
+        {process.env.ANALYTICS === "on" && <Analytics />}
       </body>
     </html>
   );
