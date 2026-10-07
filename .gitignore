@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local browser screenshots and test output
+/.playwright-mcp
+/e2e/__screens__
+/test-results
+/playwright-report
