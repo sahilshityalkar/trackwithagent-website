@@ -97,7 +97,7 @@ export default function FinancePage() {
               <ScaledPhone
                 screen={{ screenshot: screenshots.S1.file, alt: screenshots.S1.alt, mock: <DashboardMock /> }}
                 scale={0.62}
-                className="mx-auto sm:absolute sm:-bottom-8 sm:left-0 sm:mx-0 sm:[transform:translateZ(40px)]"
+                className="relative mx-auto sm:absolute sm:-bottom-8 sm:left-0 sm:mx-0 sm:[transform:translateZ(40px)]"
               />
             </div>
           </Tilt>
