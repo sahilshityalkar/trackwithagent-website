@@ -61,7 +61,7 @@ const steps: { text: ReactNode; screen: ReactNode }[] = [
       <Screen>
         <span>Type your email to confirm</span>
         <Field label="aarav@example.com" />
-        <span className="rounded-full bg-danger py-1 text-center font-semibold text-white">Delete my account</span>
+        <span className="rounded-full bg-danger py-1 text-center font-semibold text-background">Delete my account</span>
       </Screen>
     ),
   },
