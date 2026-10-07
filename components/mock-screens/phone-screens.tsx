@@ -320,3 +320,44 @@ export function GoalsMock() {
     </PhoneScreen>
   );
 }
+
+export function SettingsMock() {
+  const rows: [string, string][] = [
+    ["Name", demo.user],
+    ["UPI ID", demo.upiId],
+    ["Theme", "System"],
+    ["Password", "Change"],
+  ];
+  return (
+    <PhoneScreen nav={false}>
+      <AppBar title="Settings" />
+      <div className="flex flex-col gap-2.5 px-3 text-[11px]">
+        <MockCard className="flex flex-col divide-y divide-border p-0">
+          {rows.map(([label, value]) => (
+            <div key={label} className="flex justify-between px-3 py-2.5">
+              <span>{label}</span>
+              <span className="text-muted-foreground">{value}</span>
+            </div>
+          ))}
+        </MockCard>
+        <p className="px-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-muted-foreground">Your data</p>
+        <MockCard className="flex flex-col divide-y divide-border p-0">
+          <div className="flex justify-between px-3 py-2.5">
+            <span>Import from CSV</span>
+            <span className="text-primary">Choose file</span>
+          </div>
+          <div className="flex justify-between px-3 py-2.5">
+            <span>Export transactions</span>
+            <span className="text-primary">Download CSV</span>
+          </div>
+        </MockCard>
+        <MockCard className="border-danger/40">
+          <p className="font-semibold text-danger">Delete account</p>
+          <p className="mt-1 text-muted-foreground">
+            You are signed out everywhere. Log in within 30 days to cancel, otherwise everything is deleted.
+          </p>
+        </MockCard>
+      </div>
+    </PhoneScreen>
+  );
+}
