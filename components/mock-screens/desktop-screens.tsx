@@ -46,27 +46,23 @@ function Donut() {
   const total = demo.categories.reduce((sum, c) => sum + c.amount, 0);
   const r = 15;
   const c = 2 * Math.PI * r;
-  let offset = 0;
+  const lengths = demo.categories.map((cat) => (cat.amount / total) * c);
+  const starts = lengths.map((_, i) => lengths.slice(0, i).reduce((sum, len) => sum + len, 0));
   return (
     <svg viewBox="0 0 40 40" className="size-16 -rotate-90">
-      {demo.categories.map((cat) => {
-        const len = (cat.amount / total) * c;
-        const el = (
-          <circle
-            key={cat.name}
-            cx="20"
-            cy="20"
-            r={r}
-            fill="none"
-            stroke={cat.color}
-            strokeWidth="6"
-            strokeDasharray={`${len} ${c - len}`}
-            strokeDashoffset={-offset}
-          />
-        );
-        offset += len;
-        return el;
-      })}
+      {demo.categories.map((cat, i) => (
+        <circle
+          key={cat.name}
+          cx="20"
+          cy="20"
+          r={r}
+          fill="none"
+          stroke={cat.color}
+          strokeWidth="6"
+          strokeDasharray={`${lengths[i]} ${c - lengths[i]}`}
+          strokeDashoffset={-starts[i]}
+        />
+      ))}
     </svg>
   );
 }
