@@ -29,7 +29,7 @@ export function DeviceFrame({ variant, screenshot, alt, mock, className = "", si
 
   if (variant === "phone") {
     return (
-      <div className={`relative w-[320px] shrink-0 rounded-[52px] bg-[oklch(0.2_0.01_286)] p-2.5 shadow-elev-3 ring-1 ring-white/10 ${className}`}>
+      <div className={`relative w-[320px] shrink-0 rounded-[52px] bg-bezel p-2.5 shadow-elev-3 ring-1 ring-white/10 ${className}`}>
         <div
           className="relative h-[649px] w-[300px] overflow-hidden rounded-[42px] bg-background"
           role={showImage ? undefined : "img"}
