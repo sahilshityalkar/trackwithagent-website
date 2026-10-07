@@ -1,0 +1,55 @@
+import { site } from "@/site.config";
+import { EmailLink } from "@/components/email";
+import { LegalDoc } from "@/components/legal-doc";
+
+export const metadata = {
+  title: "How we use AI",
+  description:
+    "What the TrackWithAgent Finance assistant does, what data it sends to AI providers and what it never sends, why it cannot change your records without your tap, and its limits.",
+  alternates: { canonical: "/legal/ai" },
+  openGraph: { title: "How we use AI | TrackWithAgent", url: "/legal/ai" },
+};
+
+<LegalDoc title="How we use AI">
+
+## What the assistant does
+
+TrackWithAgent Finance includes an AI assistant. You can ask it about your money ("How much did I spend on food in August?") or ask it to add things ("₹50 chai today", "Split ₹1,200 dinner in Flat 4B", "Add ₹500 to my Goa trip goal"). It also powers the "say it" field in quick add, which turns one sentence into a filled form.
+
+## You stay in control
+
+The assistant can read your records to answer you. It can never change them by itself. Every add, change or delete it suggests appears as a card that you can edit, and nothing is saved until you tap Confirm. If you ignore or cancel the card, nothing happens.
+
+## Which AI services we use
+
+We send requests to: {site.ai.providersShort}. If the first is unavailable, we try the next. You do not choose or pay for the model.
+
+## What we send, and what we do not
+
+To answer you, we send your first name, today's date, the names of your categories, accounts, goals and groups, up to the last 12 messages of your conversation, and the results of lookups the assistant makes for your question (such as matching transactions, totals, balances, budgets, upcoming bills, and names and balances in your groups). We never send your email address, password, UPI ID or login cookie. We do not store your assistant conversations; they disappear when you leave the page.
+
+## Training
+
+We do not train AI models on your data. {site.ai.retentionNote}
+
+## Without AI
+
+If no AI service is available, Finance still understands simple entries in English, Hinglish and Hindi script using a small built-in parser that runs on our server without any AI provider. It shows the same confirm card. Questions about your spending need the AI and will work again once it is back.
+
+## Voice
+
+The mic button uses your browser's own speech recognition (Chrome, Edge and Safari; not Firefox). Your browser's provider converts your voice to text (for example, Google for Chrome). We receive only the text, and only when you tap Send. "Read replies aloud" uses your device's built-in voice.
+
+## Limits
+
+To keep the service fair and protect it from abuse: 6 assistant messages a minute and 100 a day per person, and 4 quick-add fills a minute and 40 a day.
+
+## Mistakes happen
+
+AI can misunderstand. It may choose the wrong category, misread a date, or answer a question incorrectly. Check each confirm card before saving, and treat answers as help, not financial advice. If the assistant says something wrong or inappropriate, tell us at <EmailLink email={site.supportEmail} />.
+
+## No automated decisions about you
+
+We do not use AI to make decisions that have legal or similarly significant effects on you, such as credit or eligibility decisions.
+
+</LegalDoc>
