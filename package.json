@@ -8,7 +8,12 @@
     "start": "next start",
     "lint": "eslint",
     "make:poster": "tsx scripts/make-poster.mts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint:copy": "tsx scripts/lint-copy.mts",
+    "check:launch": "tsx scripts/check-launch.mts",
+    "make:icons": "node scripts/make-icons.mjs",
+    "check:links": "linkinator http://localhost:4321 --recurse --skip ^mailto: --skip ^https://finance.trackwithagent.com --skip ^https://replay.trackwithagent.com --skip ^https://trackwithagent.com --verbosity error",
+    "check": "npm run typecheck && npm run lint && npm run lint:copy && npm run build && npm run check:launch"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
