@@ -6,7 +6,7 @@ export const demo = {
   budgets: [
     { name: "Food", emoji: "🍜", spent: 5700, limit: 8000 },
     { name: "Travel", emoji: "🚕", spent: 2100, limit: 3000 },
-    { name: "Shopping", emoji: "🛍️", spent: 3150, limit: 3500 },
+    { name: "Fun", emoji: "🎬", spent: 1100, limit: 2000 },
   ],
   accounts: [
     { name: "SBI", type: "Bank", balance: 48310 },

@@ -228,8 +228,8 @@ export function BudgetsMock() {
       <div className="flex flex-col gap-2.5 px-3 text-[11px]">
         <MockCard>
           <p className="text-muted-foreground">Left this month</p>
-          <p className="font-display text-[22px] font-bold tabular">₹3,550</p>
-          <p className="text-muted-foreground">About ₹140 a day for 25 days</p>
+          <p className="font-display text-[22px] font-bold tabular">₹4,100</p>
+          <p className="text-muted-foreground">About ₹160 a day for 25 days</p>
         </MockCard>
         {demo.budgets.map((budget) => {
           const left = budget.limit - budget.spent;
