@@ -53,7 +53,7 @@ export const site = {
       "Replay is the second agent from TrackWithAgent. It follows the same rule as Finance: the agent does the tracking, and you approve what it saves. Join the waitlist and we will write to you once, when it is ready to try.",
     waitlistFormUrl: "", // optional free form link; empty uses mailto
   },
-} as const;
+};
 
 /** True while a value is still an unfilled [PLACEHOLDER]. */
 export function isPlaceholder(value: string) {
