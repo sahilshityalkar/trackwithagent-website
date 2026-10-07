@@ -1,38 +1,45 @@
-// Every value the owner fills in before launch lives here.
-// Values in [SQUARE BRACKETS] show as visible text on the site until filled,
-// and `npm run check:launch` fails while any remain.
+// Every company fact the site shows lives here. Change a value and it updates
+// everywhere: footer, contact page, legal pages and structured data.
+// A value in [SQUARE BRACKETS] shows as visible text until filled, and
+// `npm run check:launch` fails while any remain.
 
 export const site = {
   name: "TrackWithAgent",
   url: "https://trackwithagent.com",
   tagline: "AI agents that keep track for you.",
-  legalName: "[LEGAL ENTITY NAME]",
-  address: "[REGISTERED ADDRESS]",
-  courtsCity: "[CITY FOR COURTS]",
+  legalName: "TrackWithAgent",
+  address: "India", // full registered postal address once available
+  courtsCity: "", // e.g. "Bengaluru"; empty means "the courts of India"
   city: "", // e.g. "Bengaluru"; empty hides it
   foundedYear: "", // e.g. "2026"; empty hides it
-  contactEmail: "[CONTACT EMAIL]",
-  supportEmail: "[SUPPORT EMAIL]",
-  privacyEmail: "[PRIVACY EMAIL]",
-  securityEmail: "[SECURITY EMAIL]",
-  grievance: { name: "[GRIEVANCE OFFICER NAME]", email: "[GRIEVANCE OFFICER EMAIL]" },
-  effectiveDate: "[EFFECTIVE DATE]",
-  launchDate: "[LAUNCH DATE]",
+  contactEmail: "hello@trackwithagent.com",
+  supportEmail: "support@trackwithagent.com",
+  privacyEmail: "privacy@trackwithagent.com",
+  securityEmail: "security@trackwithagent.com",
+  grievance: { name: "Grievance Officer, TrackWithAgent", email: "grievance@trackwithagent.com" },
+  effectiveDate: "7 October 2026",
+  launchDate: "7 October 2026",
   minimumAge: 18,
   founder: { name: "", role: "", bio: "", photo: "" }, // empty name hides the card; photo e.g. "/team/founder.jpg"
   social: { x: "", linkedin: "", github: "", instagram: "" }, // full profile URLs; empty hides the icon
   ai: {
-    providersShort: "[AI PROVIDERS ENABLED]", // e.g. "Anthropic (Claude) and OpenAI"
+    // List only the providers switched on in production, in fallback order.
+    providersShort: "Anthropic (Claude), OpenAI, xAI (Grok) and DeepSeek",
     // One row per provider you turn on, e.g. { name: "Anthropic PBC", role: "Processes assistant requests", location: "USA" }
-    processors: [] as { name: string; role: string; location: string }[],
+    processors: [
+      { name: "Anthropic PBC", role: "Processes assistant requests (Claude)", location: "USA" },
+      { name: "OpenAI, L.L.C.", role: "Processes assistant requests if Claude is unavailable", location: "USA" },
+      { name: "X.AI LLC", role: "Processes assistant requests if the providers above are unavailable", location: "USA" },
+      { name: "DeepSeek", role: "Processes assistant requests if all providers above are unavailable", location: "China" },
+    ] as { name: string; role: string; location: string }[],
     retentionNote:
-      "[AI PROVIDER RETENTION TERMS]", // e.g. "Our providers' API terms say they do not use API data to train their models and keep it for up to 30 days for abuse monitoring."
+      "Each provider keeps request data only as its API terms allow, and we choose API terms that do not permit training on your data where the provider offers them.",
   },
   hosting: {
-    vercelRegion: "[VERCEL REGION]",
-    neonRegion: "[NEON REGION]",
-    backupWindow: "[BACKUP WINDOW]",
-    logRetention: "[LOG RETENTION]",
+    vercelRegion: "USA",
+    neonRegion: "Singapore",
+    backupWindow: "30 days",
+    logRetention: "30 days",
   },
   finance: {
     url: "https://finance.trackwithagent.com",
