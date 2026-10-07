@@ -1,0 +1,36 @@
+import { site } from "@/site.config";
+import { Entry } from "@/components/changelog-entry";
+import { PageHeader } from "@/components/page-header";
+
+export const metadata = {
+  title: "What's new",
+  description:
+    "Release notes for TrackWithAgent: the website launch and TrackWithAgent Finance v1.0 with quick add, a Hindi and Hinglish assistant, UPI settle-up and safe to spend today.",
+  alternates: { canonical: "/changelog" },
+  openGraph: { title: "What's new | TrackWithAgent", url: "/changelog" },
+};
+
+<PageHeader title="What's new" intro="Every release of TrackWithAgent, newest first." />
+
+<div className="container-page pb-20 sm:pb-28">
+
+<Entry date={site.launchDate} title="Website launched">
+
+trackwithagent.com is live with this changelog, our security page and full legal pages.
+
+</Entry>
+
+<Entry date={site.finance.releaseDate} version="Finance v1.0" title="Finance v1.0">
+
+- A new look across the whole app, with smooth motion and a designed dark mode.
+- Quick add from any screen, and say-it quick add: one sentence fills the form.
+- The assistant now lives on every page, understands Hindi and Hinglish, takes voice input and can read replies aloud.
+- Friends view with one balance per friend, UPI settle-up with a pay link or QR code, WhatsApp reminders and group invite links.
+- Safe to spend today, upcoming bills, monthly insights, a logging streak and milestone celebrations.
+- Paste a bank or UPI SMS to fill an entry.
+- First-run setup for new accounts.
+- Account deletion now has a 30-day window to change your mind.
+
+</Entry>
+
+</div>
