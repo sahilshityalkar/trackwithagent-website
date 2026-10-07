@@ -53,7 +53,7 @@ function Founder() {
 export default function AboutPage() {
   const facts = [
     site.foundedYear && `Founded ${site.foundedYear}`,
-    site.city && `Based in ${site.city}, India`,
+    site.city ? `Based in ${site.city}, India` : "Based in India",
     site.legalName && `Legal entity: ${site.legalName}`,
   ].filter(Boolean) as string[];
 

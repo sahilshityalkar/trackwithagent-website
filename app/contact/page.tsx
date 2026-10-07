@@ -59,11 +59,11 @@ export default function ContactPage() {
             </Reveal>
           ))}
           <Reveal as="li" index={cards.length} className="rounded-3xl border border-border bg-surface-1 p-6 sm:p-7">
-            <h2 className="font-display text-lg font-bold">Postal address</h2>
+            <h2 className="font-display text-lg font-bold">Company</h2>
             <address className="mt-3 not-italic text-muted-foreground">
               {site.legalName}
               <br />
-              {site.address}
+              {site.address.includes(",") ? site.address : `Based in ${site.address}`}
             </address>
           </Reveal>
         </ul>
