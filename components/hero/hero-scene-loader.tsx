@@ -85,7 +85,12 @@ export function HeroSceneLoader({ poster }: { poster: ReactNode }) {
   const sceneVisible = mode === "ready";
 
   return (
-    <div ref={slotRef} className="absolute inset-0">
+    <div
+      ref={slotRef}
+      data-hero-slot=""
+      // Poster capture renders the scene alone, filling the viewport.
+      className={posterMode ? "fixed inset-0 z-[200]" : "absolute inset-0"}
+    >
       <div
         className={`absolute inset-0 transition-opacity duration-[400ms] ${sceneVisible ? "opacity-0" : "opacity-100"} ${
           mode === "phone" ? "animate-float-y" : ""
